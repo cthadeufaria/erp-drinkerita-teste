@@ -1,0 +1,15 @@
+body {
+  min-height: 100vh;
+}
+
+.table > :not(caption) > * > * {
+  vertical-align: middle;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.navbar-brand {
+  letter-spacing: 0.02em;
+}

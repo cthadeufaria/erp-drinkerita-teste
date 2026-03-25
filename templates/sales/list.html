@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Vendas{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1 class="h3 mb-1">Vendas</h1>
+    <p class="text-muted mb-0">Registro simplificado com baixa automática de estoque.</p>
+  </div>
+  <a href="{{ url_for('sales_create') }}" class="btn btn-primary">Nova venda</a>
+</div>
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Cliente</th>
+          <th>Produto</th>
+          <th class="text-end">Qtd.</th>
+          <th class="text-end">Unitário</th>
+          <th class="text-end">Total</th>
+          <th>Status</th>
+          <th class="text-end">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sale in sales %}
+        <tr>
+          <td>{{ sale.sale_date|brdate }}</td>
+          <td>{{ sale.client_name }}</td>
+          <td>{{ sale.product_name }}<br><span class="text-muted small">{{ sale.sku }}</span></td>
+          <td class="text-end">{{ sale.quantity }}</td>
+          <td class="text-end">{{ sale.unit_price|brl }}</td>
+          <td class="text-end">{{ sale.total|brl }}</td>
+          <td><span class="badge text-bg-{{ 'success' if sale.payment_status == 'pago' else 'warning' }}">{{ sale.payment_status|capitalize }}</span></td>
+          <td class="text-end">
+            <a class="btn btn-sm btn-outline-primary" href="{{ url_for('sales_edit', sale_id=sale.id) }}">Editar</a>
+            <form method="post" action="{{ url_for('sales_delete', sale_id=sale.id) }}" class="d-inline">
+              <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Excluir esta venda?')">Excluir</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" class="text-center py-4 text-muted">Nenhuma venda registrada.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

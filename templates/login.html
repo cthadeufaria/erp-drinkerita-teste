@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Login · ERP Protótipo{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-5">
+    <div class="card shadow-sm border-0">
+      <div class="card-body p-4 p-lg-5">
+        <div class="text-center mb-4">
+          <span class="badge text-bg-primary mb-3">Flask + SQLite + Bootstrap</span>
+          <h1 class="h3 mb-2">ERP web simples</h1>
+          <p class="text-muted mb-0">Faça login com um dos usuários demo para navegar pelos módulos.</p>
+        </div>
+        <form method="post" class="vstack gap-3">
+          <div>
+            <label class="form-label">Usuário</label>
+            <input class="form-control" name="username" required autofocus>
+          </div>
+          <div>
+            <label class="form-label">Senha</label>
+            <input class="form-control" type="password" name="password" required>
+          </div>
+          <button class="btn btn-primary w-100">Entrar</button>
+        </form>
+        <hr class="my-4">
+        <div class="small text-muted">
+          <div><strong>Admin:</strong> carlos / demo</div>
+          <div><strong>Financeiro:</strong> clawdinha / demo</div>
+          <div><strong>Financeiro:</strong> donaluci / demo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

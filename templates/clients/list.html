@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Clientes{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1 class="h3 mb-1">Clientes</h1>
+    <p class="text-muted mb-0">Cadastro simples de clientes.</p>
+  </div>
+  <a href="{{ url_for('clients_create') }}" class="btn btn-primary">Novo cliente</a>
+</div>
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Documento</th>
+          <th>Cidade</th>
+          <th>Contato</th>
+          <th>Cadastro</th>
+          <th class="text-end">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for client in clients %}
+        <tr>
+          <td>{{ client.name }}</td>
+          <td>{{ client.document }}</td>
+          <td>{{ client.city }}</td>
+          <td>{{ client.email }}<br><span class="text-muted small">{{ client.phone }}</span></td>
+          <td>{{ client.created_at|brdate }}</td>
+          <td class="text-end">
+            <a class="btn btn-sm btn-outline-primary" href="{{ url_for('clients_edit', client_id=client.id) }}">Editar</a>
+            <form method="post" action="{{ url_for('clients_delete', client_id=client.id) }}" class="d-inline">
+              <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Excluir este cliente?')">Excluir</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" class="text-center py-4 text-muted">Nenhum cliente cadastrado.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

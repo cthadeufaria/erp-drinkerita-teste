@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% block title %}Dashboard · ERP Protótipo{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+  <div>
+    <h1 class="h3 mb-1">Dashboard</h1>
+    <p class="text-muted mb-0">Resumo operacional e financeiro do protótipo ERP.</p>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <p class="text-muted small mb-2">Total de clientes</p>
+        <div class="display-6 fw-semibold">{{ stats.clients_total }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <p class="text-muted small mb-2">Produtos cadastrados</p>
+        <div class="display-6 fw-semibold">{{ stats.products_total }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <p class="text-muted small mb-2">Estoque baixo</p>
+        <div class="display-6 fw-semibold text-warning">{{ stats.low_stock }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <p class="text-muted small mb-2">Vendas do mês</p>
+        <div class="display-6 fw-semibold">{{ stats.sales_month|brl }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <p class="text-muted small mb-2">Caixa a receber</p>
+        <div class="display-6 fw-semibold text-success">{{ stats.receivable|brl }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-0 shadow-sm h-100">
+      <div class="card-body">
+        <p class="text-muted small mb-2">Caixa a pagar</p>
+        <div class="display-6 fw-semibold text-danger">{{ stats.payable|brl }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-5">
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white">
+        <h2 class="h5 mb-0">Produtos com estoque baixo</h2>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>SKU</th>
+                <th class="text-end">Saldo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for product in low_stock_products %}
+              <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.sku }}</td>
+                <td class="text-end">{{ product.stock_qty }} / mín. {{ product.min_stock }}</td>
+              </tr>
+              {% else %}
+              <tr><td colspan="3" class="text-center py-4 text-muted">Nenhum alerta no momento.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7">
+    <div class="card border-0 shadow-sm mb-4">
+      <div class="card-header bg-white">
+        <h2 class="h5 mb-0">Últimas vendas</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Produto</th>
+              <th>Data</th>
+              <th class="text-end">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for sale in recent_sales %}
+            <tr>
+              <td>{{ sale.client_name }}</td>
+              <td>{{ sale.product_name }}</td>
+              <td>{{ sale.sale_date|brdate }}</td>
+              <td class="text-end">{{ sale.total|brl }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center py-4 text-muted">Sem vendas registradas.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card border-0 shadow-sm">
+      <div class="card-header bg-white">
+        <h2 class="h5 mb-0">Agenda financeira</h2>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Tipo</th>
+              <th>Vencimento</th>
+              <th class="text-end">Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for entry in finance_due %}
+            <tr>
+              <td>{{ entry.description }}</td>
+              <td><span class="badge text-bg-{{ 'success' if entry.entry_type == 'receber' else 'danger' }}">{{ entry.entry_type|capitalize }}</span></td>
+              <td>{{ entry.due_date|brdate }}</td>
+              <td class="text-end">{{ entry.amount|brl }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center py-4 text-muted">Sem lançamentos.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

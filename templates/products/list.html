@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Produtos{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1 class="h3 mb-1">Produtos</h1>
+    <p class="text-muted mb-0">Catálogo de itens e parâmetros de estoque.</p>
+  </div>
+  <a href="{{ url_for('products_create') }}" class="btn btn-primary">Novo produto</a>
+</div>
+<div class="card border-0 shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>SKU</th>
+          <th>Categoria</th>
+          <th class="text-end">Preço</th>
+          <th class="text-end">Custo</th>
+          <th class="text-end">Estoque</th>
+          <th class="text-end">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+        <tr>
+          <td>{{ product.name }}</td>
+          <td>{{ product.sku }}</td>
+          <td>{{ product.category }}</td>
+          <td class="text-end">{{ product.price|brl }}</td>
+          <td class="text-end">{{ product.cost|brl }}</td>
+          <td class="text-end">
+            <span class="{{ 'text-warning fw-semibold' if product.stock_qty <= product.min_stock else '' }}">
+              {{ product.stock_qty }} / mín. {{ product.min_stock }}
+            </span>
+          </td>
+          <td class="text-end">
+            <a class="btn btn-sm btn-outline-primary" href="{{ url_for('products_edit', product_id=product.id) }}">Editar</a>
+            <form method="post" action="{{ url_for('products_delete', product_id=product.id) }}" class="d-inline">
+              <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Excluir este produto?')">Excluir</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="text-center py-4 text-muted">Nenhum produto cadastrado.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Editar lançamento' if entry else 'Novo lançamento' }}{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h3 mb-4">{{ 'Editar lançamento' if entry else 'Novo lançamento' }}</h1>
+        <form method="post" class="row g-3">
+          <div class="col-md-8">
+            <label class="form-label">Descrição</label>
+            <input class="form-control" name="description" value="{{ entry.description if entry else '' }}" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Categoria</label>
+            <input class="form-control" name="category" value="{{ entry.category if entry else '' }}">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Tipo</label>
+            <select class="form-select" name="entry_type">
+              <option value="receber" {% if entry and entry.entry_type == 'receber' %}selected{% endif %}>Receber</option>
+              <option value="pagar" {% if entry and entry.entry_type == 'pagar' %}selected{% endif %}>Pagar</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Valor</label>
+            <input class="form-control" type="number" step="0.01" min="0" name="amount" value="{{ entry.amount if entry else '' }}" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Vencimento</label>
+            <input class="form-control" type="date" name="due_date" value="{{ entry.due_date if entry else '' }}" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Status</label>
+            <select class="form-select" name="status">
+              <option value="pendente" {% if entry and entry.status == 'pendente' %}selected{% endif %}>Pendente</option>
+              <option value="pago" {% if entry and entry.status == 'pago' %}selected{% endif %}>Pago</option>
+            </select>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Observações</label>
+            <textarea class="form-control" rows="3" name="notes">{{ entry.notes if entry else '' }}</textarea>
+          </div>
+          <div class="col-12 d-flex gap-2">
+            <button class="btn btn-primary">Salvar</button>
+            <a href="{{ url_for('finance_list') }}" class="btn btn-outline-secondary">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

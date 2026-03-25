@@ -1,0 +1,68 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.109:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 120-915-599
+192.168.1.243 - - [25/Mar/2026 12:51:42] "[32mGET / HTTP/1.1[0m" 302 -
+192.168.1.243 - - [25/Mar/2026 12:51:42] "GET /login HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:51:42] "GET /static/style.css HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:51:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+192.168.1.243 - - [25/Mar/2026 12:52:09] "[32mPOST /login HTTP/1.1[0m" 302 -
+192.168.1.243 - - [25/Mar/2026 12:52:09] "GET /dashboard HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:09] "GET /static/style.css HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:14] "GET /dashboard HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:52:15] "GET /clientes HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:52:17] "GET /produtos HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:52:18] "GET /estoque HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:52:19] "GET /vendas HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:52:20] "GET /financeiro HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:52:21] "GET /dashboard HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:52:23] "[32mGET /logout HTTP/1.1[0m" 302 -
+192.168.1.243 - - [25/Mar/2026 12:52:23] "GET /login HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:52:23] "GET /static/style.css HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+192.168.1.243 - - [25/Mar/2026 12:53:12] "GET /dashboard HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:12] "GET /static/style.css HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:12] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+192.168.1.243 - - [25/Mar/2026 12:53:12] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+192.168.1.243 - - [25/Mar/2026 12:53:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+192.168.1.243 - - [25/Mar/2026 12:53:18] "GET /dashboard HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:53:25] "GET /clientes HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:53:27] "GET /produtos HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:53:29] "GET /estoque HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:53:40] "[32mPOST /estoque/movimentar HTTP/1.1[0m" 302 -
+192.168.1.243 - - [25/Mar/2026 12:53:40] "GET /estoque HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:40] "GET /static/style.css HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:48] "GET /vendas HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:53:52] "GET /vendas/nova HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:53:55] "GET /financeiro HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:53:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:53:59] "GET /financeiro/novo HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:54:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 12:54:17] "GET /financeiro HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 12:54:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 13:06:46] "[32mGET /logout HTTP/1.1[0m" 302 -
+192.168.1.243 - - [25/Mar/2026 13:06:46] "GET /login HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 13:06:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+192.168.1.243 - - [25/Mar/2026 13:06:55] "POST /login HTTP/1.1" 200 -
+192.168.1.243 - - [25/Mar/2026 13:06:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
